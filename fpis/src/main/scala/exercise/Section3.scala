@@ -11,11 +11,16 @@ object Section3 {
   case class Cons[+A](head: A, tail: List[A]) extends List[A]
 
   object List {
+
     def apply[A](as: A*): List[A] = {
       if (as.isEmpty) Nil
       else Cons[A](as.head, apply(as.tail: _*))
     }
 
+    /**
+     * EXERCISE 3.7
+     * ショート条件を追加するような関数を受け取れば出来そう
+     */
     def foldRight[A, B](as: List[A], z: B)(f: (A, B) => B): B = as match {
       case Nil => z
       case Cons(x, xs) => f(x, foldRight(xs, z)(f))
@@ -84,6 +89,16 @@ object Section3 {
         case Cons(x, Cons(y, Nil)) => Cons(x, Nil)
         case Cons(x, xs)           => Cons(x, init(xs))
       }
+
+    /** EXERCISE 3.9 */
+    def length[A](as: List[A]): Int = foldRight(as, 0)( (x: A, y: Int) => 1 + y)
+
+    /** EXERCISE 3.10 */
+    @tailrec
+    def foldLeft[A, B](as: List[A], z: B)(f: (B, A) => B): B = as match {
+      case Nil => z
+      case Cons(x, xs) => foldLeft(xs, f(z, x))(f)
+    }
   }
 
   /** EXERCISE 3.1 */
@@ -94,5 +109,11 @@ object Section3 {
     case Cons(h, t)                            => h + List.sum(t)
     case _                                     => 101
   }
+
+  /** EXERCISE 3.8
+    * 入力のコピーが生成される。
+    * コンストラクタとの関係はコピー？
+    */
+  val x_3_8 = List.foldRight(List(1,2,3), Nil: List[Int])(Cons(_, _))
 
 }

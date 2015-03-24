@@ -25,3 +25,8 @@ Section3.List.sum(Section3.List[Int](1,2,3,4,5))
 Section3.List.∑(Section3.List[Int](1,2,3,4,5))
 Section3.List.product(Section3.List[Double](1.0,2.0,3.0,4.0,5.0))
 Section3.List.∏(Section3.List[Double](1.0,2.0,3.0,4.0,5.0))
+
+Section3.x_3_8
+Section3.List.length(Section3.List[Int](1,2,3,4,5))
+Section3.List.length(Section3.List[Int](1,2,3))
+Section3.List.length(Section3.List[Int]())
