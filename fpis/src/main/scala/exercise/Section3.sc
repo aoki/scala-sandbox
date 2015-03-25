@@ -1,21 +1,22 @@
-import exercise.Section3
-import Section3.{List => L}
-Section3.x
+import datastructures.{List => L}
+import datastructures.Nil
+
+L.x
 L.tail(L[Int](1,2,3,4,5))
 L.tail(L[Int](1))
-L.tail(Section3.Nil)
+L.tail(Nil)
 L.setHead(100, L[Int](1,2,3,4,5))
 L.setHead(200, L[Int](1))
-L.setHead(300, Section3.Nil)
+L.setHead(300, Nil)
 L.drop(L[Int](1,2,3,4,5), 3)
 L.drop(L[Int](1), 3)
-L.drop(Section3.Nil, 3)
+L.drop(Nil, 3)
 L.dropWhile(L[Int](1,2,3,4,5), (x: Int) => x < 4)
 L.dropWhile(L[Int](1), (x: Int) => x < 4)
-L.dropWhile(Section3.Nil, (x: Int) => x < 4)
+L.dropWhile(Nil, (x: Int) => x < 4)
 L.init(L[Int](1,2,3,4,5))
 L.init(L[Int](1))
-L.init(Section3.Nil)
+L.init(Nil)
 L.dropWhile2(L[Int](1,2,3,4,5))(_ < 4)
 L.dropWhile2(L[Int](1))(_< 4)
 L.dropWhile2(L[Int]())(_ < 4)
@@ -23,7 +24,7 @@ L.sum(L[Int](1,2,3,4,5))
 L.∑\(L[Int](1,2,3,4,5))
 L.product(L[Double](1.0,2.0,3.0,4.0,5.0))
 L.∏\(L[Double](1.0,2.0,3.0,4.0,5.0))
-Section3.x_3_8
+L.x_3_8
 L.length(L[Int](1,2,3,4,5))
 L.length(L[Int](1,2,3))
 L.length(L[Int]())
