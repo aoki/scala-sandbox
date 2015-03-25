@@ -29,5 +29,7 @@ val t4 = B(
   B(L("3"), L("4"))
 )
 T.map(t4)(_.toInt)
-
-List(1,2)
+T.foldSize(t)
+T.foldMaximum(t2)(_.max(_))
+T.foldDepth(t3)
+T.foldMap(t4)(a => L(a.toInt))
