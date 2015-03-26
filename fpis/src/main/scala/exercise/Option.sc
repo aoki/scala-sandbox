@@ -1,0 +1,25 @@
+import errorhandling.{Some, None, Option}
+
+Some(1).map(_.toString)
+None.map(Nothing => Nothing)
+Some(1).getOrElse(3)
+None.getOrElse(3)
+Some(1).flatMap(a => Some(a.toDouble))
+None.flatMap(Nothing => Nothing)
+Some(1).orElse(Some(3))
+Some(1).orElse(Some("Foo"))
+None.orElse(Some("Foo"))
+
+Some(1).filter(_ % 2 == 0)
+Some(2).filter(_ % 2 == 0)
+Option.mean(Seq(1,2,3,4,5))
+Option.variance(Seq(1,2,3,4,5))
+Option.lift((x: Int) => x.toString)
+
+Option.sequence(List(Some(1),Some(2),Some(3)))
+Option.sequence(List(Some(1),None,Some(3)))
+Option.traverse(List("1", "2", "3"))(x => Option.Try(x.toInt))
+Option.traverse(List("1", "x", "3"))(x => Option.Try(x.toInt))
+List(1,2,3) ::: List(4,5,6)
+List(1,2,3).reverse_:::(List(4,5,6))
+List(1,2,3).mapConserve(_.toString)
