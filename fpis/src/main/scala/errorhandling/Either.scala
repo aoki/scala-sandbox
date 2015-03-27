@@ -12,7 +12,7 @@ trait Either[+E, +A] {
     case Left(e) => Left(e)
   }
 
-  def orElse[EE >: E, B >: A](b: => Either[EE, B]): Either[EE, B] = this match {
+  def orElse[EE >: E, AA >: A](b: => Either[EE, AA]): Either[EE, AA] = this match {
     case Right(a) => Right(a)
     case Left(_) => b
   }
@@ -43,4 +43,14 @@ object Either {
   def Try[A](a: => A): Either[Exception, A] =
     try Right(a)
     catch { case e: Exception => Left(e) }
+
+  /** EXERCISE 4.7 */
+  def sequence[E, A](as: List[Either[E, A]]): Either[E, List[A]] = {
+    as.foldRight[Either[E, List[A]]](Right(Nil))( (ea, acc) => ea.map2(acc)(_ :: _) )
+  }
+
+  def traverse[E, A, B](as: List[A])(f: A => Either[E, B]): Either[E, List[B]] = {
+    as.foldRight[Either[E, List[B]]](Right(Nil))( (a, acc) => f(a).map2(acc)(_ :: _) )
+//    as.foldRight[Either[E, List[B]]](Right(Nil))( (a, acc) => for { b <- f(a); l <- acc} yield b :: l )
+  }
 }

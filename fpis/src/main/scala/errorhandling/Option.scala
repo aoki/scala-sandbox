@@ -30,7 +30,7 @@ case object None extends Option[Nothing]
 object Option {
   def mean(xs: Seq[Double]): Option[Double] =
     if (xs.isEmpty) None
-    else Some(xs.sum /xs.length)
+    else Some(xs.sum / xs.length)
 
   /** EXERCISE 4.2 */
   def variance(xs: Seq[Double]): Option[Double] = {
